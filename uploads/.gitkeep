@@ -1,0 +1,3 @@
+# This directory is used for temporarily storing user-uploaded files (.txt, .pdf) 
+# during the document translation process in app.py.
+# The actual uploaded files will be ignored by Git.
