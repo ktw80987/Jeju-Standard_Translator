@@ -20,6 +20,3 @@ uploads/*
 .AppleDouble
 .LSOverride
 Thumbs.db
-
-# Model Weights
-*.pth
