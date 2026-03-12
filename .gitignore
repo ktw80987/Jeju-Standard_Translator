@@ -23,4 +23,3 @@ Thumbs.db
 
 # Model Weights
 *.pth
-model/
