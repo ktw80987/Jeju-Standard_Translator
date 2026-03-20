@@ -32,12 +32,6 @@ Jeju-Standard_Translator/
 - Python
 - Pytorch
 
-## 가상환경 생성 및 활성화 (선택 사항)
-``` bash
-python -m venv venv
-source venv/bin/activate  # Windows의 경우: venv\Scripts\activate
-```
-
 ## 의존성 패키지 설치
 ``` bash
 pip install -r requirements.txt
