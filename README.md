@@ -18,80 +18,69 @@
 Jeju-Standard_Translator/
 ├── app.py                  # Flask 애플리케이션 실행 파일
 ├── templates/
-│   └── index.html          # 메인 웹 페이지
+│   └── index.html          # 메인 프론트엔드 페이지
 ├── static/
-│   ├── css/                # 스타일 파일
-│   ├── js/                 # 프론트엔드 JavaScript
-│   └── img/                # 이미지/아이콘 리소스
+│   ├── css/                # 스타일시트 파일
+│   ├── js/                 # 프론트엔드 JavaScript 로직
+│   └── img/                # 아이콘 및 이미지 리소스
 ├── model/
-│   └── pkot5_weights.pth   # Fine-tuned 번역 모델 가중치
-├── uploads/                # 업로드된 문서와 번역 결과 파일 저장 폴더
-├── requirements.txt        # Python 패키지 의존성
+│   └── pkot5_weights.pth   # Fine-tuned 번역 모델 가중치 (필요)
+├── uploads/                # 업로드된 문서 및 번역 결과물 저장소
+├── requirements.txt        # Python 패키지 의존성 목록
 └── README.md               # 프로젝트 설명 문서
 ```
 
-## ⚙️ 설치 및 실행
-1. 의존성 설치
+## ⚙️ 환경 세팅 및 실행
+### 의존성 설치
 ``` bash
 pip install -r requirements.txt
 ```
-2. 업로드 폴더 생성
+### 업로드 폴더 생성
 ``` bash
 mkdir -p uploads
 ```
-3. 서버 실행
+### 서버 실행
 ```bash
 python app.py
 ```
 
-### 📌 참고 사항
+#### 📌 참고 사항
 
 실행 전에 `model` 내부에 `pkot5_weights.pth` 가중치 파일을 준비해야 합니다.
 
-
 ## 🛠 기술 스택
 
-### 프론트엔드
-- HTML5
-- CSS3
-- JavaScript
+| 분류 | 사용 기술 |
+| :--- | :--- |
+| **Frontend** | HTML5, CSS3, JavaScript |
+| **Backend** | Python, Flask |
+| **AI** | PyTorch, HuggingFace Transformers, Sentence-Transformers, Scikit-learn |
 
-### 백엔드 / AI
-- Flask
-- Python
-- Pytorch
-- HF Transformers
-- Sentence-Transformers
-- Scikit-learn
-
-## 프로젝트 세부 사항
-
-### 데이터셋
+# 📊 프로젝트 세부 사항
+---
+## 1.데이터셋
 - AI Hub: 한국어 방언 발화(제주도), 중노년층 한국어 방언 데이터
-- WORDROW/제주도 사투리: 아래 항목들 크롤링
-`명사`, `형용사`, `동사`, `의존명사`, `부사`, `관형사`, `어미`, `감탄사`, `대명사`, `조사`, `품사없음`
+- WORDROW/제주도 사투리 크롤링: `명사`, `형용사`, `동사`, `의존명사`, `부사`, `관형사`, `어미`, `감탄사`, `대명사`, `조사`, `품사없음`
 
-### 전처리 결과
+## 2.전처리 결과
 - 확장자: JSON
 - 총 크기: 155MB
 - 데이터셋 분할: Train 6182 / Validation 462 / Test 463 (약 8:1:1)
 
-### 개발 환경
-- Google Cloud Platform의 Vertex AI (Jupyter Notebook)
-- GPU: NVIDIA Tesla A100 40GB 1개, CPU: vCPU 12개, RAM: 85GB
-
-### 학습 모델 선정: BART vs T5
-- [Advancing_Wolof-French_Sentence_Translation_Comparative_Analysis_of_Transformer-Based_Models_and_Methodological_Insights.pdf](https://github.com/user-attachments/files/26134725/Advancing_Wolof-French_Sentence_Translation_Comparative_Analysis_of_Transformer-Based_Models_and_Methodological_Insights.pdf)
-- 위 논문의 T5 기계 번역 성능이 더 높은것을 확인하여 T5 계열로 선정
+## 3.모델 및 학습 환경
+- 개발 환경: Google Cloud Platform Vertex AI (Jupyter Notebook)
+- 하드웨어 사양: NVIDIA Tesla A100 (40GB) 1개 / vCPU 12개 / RAM 85GB
+- 베이스 모델: paust/pko-t5-base (T5 기반 한국어 모델)
+- 모델 선정(BART vs T5): BART 대비 T5의 기계 번역 성능이 우수함을 [논문](https://github.com/user-attachments/files/26134725/Advancing_Wolof-French_Sentence_Translation_Comparative_Analysis_of_Transformer-Based_Models_and_Methodological_Insights.pdf)을 통해 확인하여 T5 계열 채택
 
 ### 🤖 사용 모델
 - **Base model**: paust/pko-t5-base (T5 기반 한국형 모델)
  
 ### 학습 방법: Full Fine-Tuning
 #### 학습 전략
-- JSON 데이터셋으로부터 표준어와 방언 키-값을 호출하여, 
-정의된 클래스 내부에서 (방언, 표준어), (표준어, 방언) 쌍을 data 배열에 추가하여 데이터 증강,
-모델에 전달할 Dataset 및 DataLoader 구축 및 양방양 번역 환경 마련
+- JSON 데이터셋에서 표준어와 방언 쌍을 호출
+- 정의된 클래스 내부에서 (방언, 표준어), (표준어, 방언) 쌍을 배열에 추가하여 데이터 증강 처리
+- 모델 전달용 Dataset 및 DataLoader 구축으로 양방향 번역 환경 최적화
 
 
 ## 📝 라이선스 (License)
