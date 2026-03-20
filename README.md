@@ -76,7 +76,7 @@ python app.py
 ### 🤖 사용 모델
 - **Base model**: paust/pko-t5-base (T5 기반 한국형 모델)
  
-### 학습 방법: Full Fine-Tuning
+#### 학습 방법: Full Fine-Tuning
 #### 학습 전략
 - JSON 데이터셋에서 표준어와 방언 쌍을 호출
 - 정의된 클래스 내부에서 (방언, 표준어), (표준어, 방언) 쌍을 배열에 추가하여 데이터 증강 처리
