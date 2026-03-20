@@ -71,7 +71,7 @@ python app.py
 - 개발 환경: Google Cloud Platform Vertex AI (Jupyter Notebook)
 - 하드웨어 사양: NVIDIA Tesla A100 (40GB) 1개 / vCPU 12개 / RAM 85GB
 - 베이스 모델: paust/pko-t5-base (T5 기반 한국어 모델)
-- 모델 선정(BART vs T5): BART 대비 T5의 기계 번역 성능이 우수함을 [논문](https://github.com/user-attachments/files/26134725/Advancing_Wolof-French_Sentence_Translation_Comparative_Analysis_of_Transformer-Based_Models_and_Methodological_Insights.pdf)을 통해 확인하여 T5 계열 채택
+- 모델 선정(BART vs T5): BART 대비 T5의 기계 번역 성능이 우수함을 [선행 연구](https://github.com/user-attachments/files/26134725/Advancing_Wolof-French_Sentence_Translation_Comparative_Analysis_of_Transformer-Based_Models_and_Methodological_Insights.pdf)를 통해 확인하여 T5 계열 채택
 
 ### 🤖 사용 모델
 - **Base model**: paust/pko-t5-base (T5 기반 한국형 모델)
